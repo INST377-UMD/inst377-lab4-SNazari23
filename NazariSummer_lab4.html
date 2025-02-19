@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>INST335_LAB4_snazari</title>
+    <meta charset="UTF-8">
+      <!-- CSS -->
+   <style>
+        body {
+            background-color: lightblue;
+            font-family: "Times New Roman", Times, serif;
+            color: black;
+        }
+
+        #alert_me, #color_change, #tester, #text {
+            background-color: hwb(300 2% 64%);
+            color: white;
+            border: 2px solid rgb(255, 255, 255);
+            padding: 10px;
+            width: 45%;
+            float: left;
+            margin: 10px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        input {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+       <!-- Title  -->
+    <h1 id="mainHeading">INST377 - Lab 4</h1>
+
+    <!-- Section Alert Me -->
+    <section id="alert_me">
+           <!-- HTML-->
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <button type="button" onclick="showAlert()">Alert Me!</button>
+        </form>
+    </section>
+   <!-- Java Script -->
+    <script type="text/javascript">
+        function showAlert() {
+            let name = document.getElementById("name").value;
+            if (name) {
+                alert("Hi " + name + "!");
+            }
+        }
+    </script>
+
+    <!-- Section Color Change -->
+      <!-- HTML-->
+    <section id="color_change">
+        <button type="button" id="colorButton">Change Color</button>
+    </section>
+
+ <!-- Java Script -->
+    <script type="text/javascript">
+        function changeColor() {
+            const body = document.body;
+            body.style.backgroundColor = (body.style.backgroundColor === "pink") ? "lightblue" : "pink";
+        }
+        document.getElementById("colorButton").addEventListener("click", changeColor);
+    </script>
+
+    <!-- Section Tester -->
+         <!-- HTML-->
+    <section id="tester">
+        <form name="contactForm">
+            <label for="textTester">Text Tester:</label>
+            <input type="text" id="textTester" name="textTester" required>
+            <button type="button" id="validateText">Validate Text</button>
+        </form>
+    </section>
+
+ <!-- Java Script -->
+    <script type="text/javascript">
+        function formValidation() {
+            const textInput = document.getElementById("textTester");
+            const validationRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if (validationRegex.test(textInput.value)) {
+                alert('How about..... nah :(');
+                return false;
+            }
+            textInput.value = "";
+            return false;
+        }
+        document.getElementById("validateText").addEventListener("click", formValidation);
+    </script>
+
+    <!-- Section Text -->
+       <!-- HTML-->
+    <section id="text">
+        <button type="button" onclick="addText()">Add Text</button>
+    </section>
+ <!-- Java Script -->
+    <script type="text/javascript">
+     function addText() {
+    let heading = document.getElementById("mainHeading");
+    if (!heading.innerHTML.includes( " - Adding Text")) {
+        heading.innerHTML += " - Adding Text";
+    }
+}
+
+    </script>
+</body>
+</html>
